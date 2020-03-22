@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import "../Validation.css";
 
 class ValidationByCallback extends Component {
-  state = {
-    password: "",
-    clicked: false,
-    validated: false
-  };
+  constructor(props) {
+    super(props);
+    this.input = null;
+    
+    this.state = {
+      password: "",
+      clicked: false,
+      validated: false
+    };
+  }
 
-  // input 이벤트를 통해 state.password 변경
   handleChange = e => {
     this.setState({
       password: e.target.value
@@ -19,6 +23,7 @@ class ValidationByCallback extends Component {
       clicked: true,
       validated: this.state.password === "password"
     });
+    this.input.select();
   };
 
   // enter key press event
@@ -32,9 +37,11 @@ class ValidationByCallback extends Component {
     return (
       <div>
         <input
+          ref={ref => {
+            this.input = ref;
+          }}
           type="password"
           value={this.state.password}
-          ref={this.input}
           onChange={this.handleChange}
           //TIP: 비밀번호가 password 일 경우 success, 아닐경우 failure style 적용
           className={

@@ -19,7 +19,7 @@ class ScrollBox extends Component {
   render() {
     const style = {
       border: "1px solid black",
-      height: "700px",
+      height: "400px",
       width: "600px",
       overflow: "auto",
       position: "relative"

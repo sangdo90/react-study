@@ -2,25 +2,27 @@ import React, { Component } from "react";
 import "../Validation.css";
 
 class Validation extends Component {
+  // Input DOM 엘리먼트를 저장하기 위한 ref를 생성
   input = React.createRef();
+
   state = {
     password: "",
     clicked: false,
     validated: false
   };
 
-  // input 이벤트를 통해 state.password 변경
   handleChange = e => {
     this.setState({
       password: e.target.value
     });
   };
+  
   handleButtonClick = () => {
     this.setState({
       clicked: true,
       validated: this.state.password === "password"
     });
-    this.input.current.focus();
+    this.input.current.select();
   };
 
   // enter key press event
