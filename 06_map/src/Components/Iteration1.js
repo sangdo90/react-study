@@ -11,7 +11,7 @@ import React from "react";
 //   );
 // };
 
-// // NOTE: not set 'key' prop
+// // NOTE: if not set 'key', warning console log 
 // const Iteration1 = () => {
 //   const names = ["string1", "string2", "string3", "string4"];
 //   const nameList = names.map(name => <li>{name}</li>);
