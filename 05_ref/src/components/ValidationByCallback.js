@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Validation.css";
+import "../Validation.css";
 
 class ValidationByCallback extends Component {
   state = {

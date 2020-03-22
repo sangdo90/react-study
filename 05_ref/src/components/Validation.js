@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Validation.css";
+import "../Validation.css";
 
 class Validation extends Component {
   input = React.createRef();
