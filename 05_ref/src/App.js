@@ -2,8 +2,43 @@ import React, { Component } from "react";
 import "./App.css";
 import Validation from "./components/Validation";
 import ScrollBox from "./components/ScrollBox";
-import CustomTextInput from "./components/CustomTextInput";
 import ValidationByCallback from "./components/ValidationByCallback";
+import FilterBar from "./components/FilterBar";
+
+// TIP: 콜백 함수를 통한 class component에 ref 사용
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>ref example 1 - html element에 사용</h1>
+        <FilterBar />
+        <hr />
+        <ValidationByCallback/>
+        <hr />
+        <h1>ref example 3 - class component에 사용</h1>
+        {/*   TIP:callback 함수를 통한 ref 설정 */}
+        <ScrollBox ref={ref => (this.myBox = ref)} />
+        <button onClick={() => this.myBox.scrollToBottom()}>
+          맨 밑으로 가기
+        </button>
+        <hr />
+        {/* <h1> ref by callback function</h1>
+        <CustomTextInput /> */}
+      </div>
+    );
+  }
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
 
 // // TIP: createRef를 사용한 class component에 ref 사용
 // class App extends Component {
@@ -42,27 +77,4 @@ import ValidationByCallback from "./components/ValidationByCallback";
 //     );
 //   }
 // }
-
-// TIP: 콜백 함수를 통한 class component에 ref 사용
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>ref example 1 - html element에 사용</h1>
-        <Validation />
-        {/* <ValidationByCallback /> */}
-        <hr />
-        <h1>ref example 2 - class component에 사용</h1>
-        {/*   TIP:callback 함수를 통한 ref 설정 */}
-        <ScrollBox ref={ref => (this.myBox = ref)} />
-        <button onClick={() => this.myBox.scrollToBottom()}>
-          맨 밑으로 가기
-        </button>
-        <hr />
-        {/* <h1> ref by callback function</h1>
-        <CustomTextInput /> */}
-      </div>
-    );
-  }
-}
-export default App;
+// export default App;

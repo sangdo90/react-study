@@ -23,6 +23,8 @@ class ValidationByCallback extends Component {
       clicked: true,
       validated: this.state.password === "password"
     });
+    console.log("this.input")
+    console.log(this.input)
     this.input.select();
   };
 

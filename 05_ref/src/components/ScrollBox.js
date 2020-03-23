@@ -9,9 +9,9 @@ class ScrollBox extends Component {
 
 
     /* TIP:
-    scrollTop : 세로 스크롤바 위치 (0 ~ 700 px)
-    scrollHeight : 스크롤이 있는 박스 안에서 div의 높이 (1400px)
-    clientHeight : 스크롤이 있는 박스 높이 (700px)
+    scrollTop : 세로 스크롤바 위치 (0 ~ 700 px) 
+    scrollHeight : 스크롤이 있는 박스 안에서 div의 높이 (1400px) == 전체 높이
+    clientHeight : 스크롤이 있는 박스 높이 (700px) == 눈에 보이는 만큼 높이
      */
     this.box.scrollTop = scrollHeight - clientHeight;
   };
