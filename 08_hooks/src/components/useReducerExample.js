@@ -1,5 +1,12 @@
 import React, { useReducer } from "react";
 
+function initialState() {
+  return {
+    name: "",
+    address: ""
+  }
+}
+
 function reducer(state, action) {
   console.log(state)
   console.log(action)
@@ -12,10 +19,7 @@ function reducer(state, action) {
 const Info3 = () => {
   const [state, dispatch] = useReducer(
     reducer,
-    {
-      name: "",
-      address: ""
-    });
+    initialState);
 
   const { name, address } = state;
   const onChange = e => {

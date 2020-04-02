@@ -72,7 +72,7 @@ const Info = () => {
 ---
 
 # useEffect
-- ###### 리액트 컴포넌트가 렌더링될 때마다 특저 작업을 수행하도록 설정할 수 있는 Hook
+- 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook
 - 클래스형 컴포넌트의 <span style="color:blue">**componentDidMount**, **componentDidUpdate**, **componentWillUnmount**</span> 합친 기능과 비슷함
 - 사용법
   - `useEffect(didUpdate);`
