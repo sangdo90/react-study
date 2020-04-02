@@ -6,59 +6,98 @@
  */
 
 
- @import 'gaia';
+@import 'gaia';
 
- section {
-   background: rgb(254, 255, 246)
-     /* background-color: black; */
- 
- }
- 
- /* Add prefix and total page number */
- section::after {
-   content: attr(data-marpit-pagination) ' / 'attr(data-marpit-pagination-total);
-   font-size: 20px;
-   align-content: center;
- }
- 
- 
- h1 {
-   font-size: 50px;
-   color: rgb(27, 25, 153)
- }
- 
- h2 {
-   font-size: 40px;
-   color: rgb(2, 66, 117)
- }
+section {
+  background: rgb(254, 255, 246)
+    /* background-color: black; */
 
- h3 {
+}
+
+/* Add prefix and total page number */
+section::after {
+  content: attr(data-marpit-pagination) ' / 'attr(data-marpit-pagination-total);
+  font-size: 20px;
+  align-content: center;
+}
+
+
+h1 {
+  font-size: 50px;
+  color: rgb(27, 25, 153)
+}
+
+h2 {
+  font-size: 40px;
+  color: rgb(2, 66, 117)
+}
+
+h3 {
   font-size: 35px;
   color: rgb(0, 0, 0)
 }
- 
- 
- section.split {
-   overflow: visible;
-   display: grid;
-   grid-template-columns: 600px 600px;
-   grid-template-rows: 50px auto;
-   grid-template-areas: 
-       "slideheading slideheading"
-       "leftpanel rightpanel";
- }
- 
- section.split .ldiv { grid-area: leftpanel; }
- section.split .rdiv { grid-area: rightpanel; }
 
- section.split2 {
+ul {
+  list-style: none;
+  /* Remove default bullets */
+}
+
+ul li::before {
+  content: "-";
+  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  font-weight: bold;
+  /* If you want it to be bold */
+  display: inline-block;
+  /* Needed to add space between the bullet and the text */
+  width: 1em;
+  /* Also needed for space (tweak if needed) */
+  margin-left: -1em;
+  /* Also needed for space (tweak if needed) */
+}
+
+
+li {
+  font-size: 30px;
+  color: rgb(0, 0, 0)
+}
+
+li li {
+  font-size: 25px;
+  color: rgb(46, 46, 46)
+}
+
+
+section.split {
+  overflow: visible;
+  display: grid;
+  grid-template-columns: 600px 600px;
+  grid-template-rows: 50px auto;
+  grid-template-areas:
+    "slideheading slideheading"
+    "leftpanel rightpanel";
+}
+
+section.split .ldiv {
+  grid-area: leftpanel;
+}
+
+section.split .rdiv {
+  grid-area: rightpanel;
+}
+
+section.split2 {
   overflow: visible;
   display: grid;
   grid-template-columns: 600px 600px;
   grid-template-rows: 10px;
-  grid-template-areas: 
-      "leftpanel rightpanel";
+  grid-template-areas:
+    "leftpanel rightpanel";
 }
 
-section.split2 .ldiv { grid-area: leftpanel; }
-section.split2 .rdiv { grid-area: rightpanel; }
+section.split2 .ldiv {
+  grid-area: leftpanel;
+}
+
+section.split2 .rdiv {
+  grid-area: rightpanel;
+}
