@@ -42,7 +42,7 @@
    overflow: visible;
    display: grid;
    grid-template-columns: 600px 600px;
-   grid-template-rows: 100px auto;
+   grid-template-rows: 50px auto;
    grid-template-areas: 
        "slideheading slideheading"
        "leftpanel rightpanel";
@@ -51,13 +51,11 @@
  section.split .ldiv { grid-area: leftpanel; }
  section.split .rdiv { grid-area: rightpanel; }
 
-
-  
  section.split2 {
   overflow: visible;
   display: grid;
   grid-template-columns: 600px 600px;
-  grid-template-rows: 100px auto;
+  grid-template-rows: 10px;
   grid-template-areas: 
       "leftpanel rightpanel";
 }

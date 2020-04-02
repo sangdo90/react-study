@@ -14,6 +14,7 @@ auto-scaling: true
 - 클래스 컴포넌트를 작성하지 않아도 state와 같은 특징을 사용할 수 있음
 
 ---
+
 # useState 
 - 가장 기본적인 hook이며 가변적인 상태를 지닐 수 있게 해줌
 - 사용법
@@ -37,7 +38,9 @@ function Example() {
   );
 }							         			                                    
 ```
+
 ***
+
 ## useState 여러번 사용
 ``` javaScript
 import React, {useState} from 'react';
@@ -67,14 +70,16 @@ const Info = () => {
 ```
 
 ---
+
 # useEffect
-- 리액트 컴포넌트가 렌더링될 때마다 특저 작업을 수행하도록 설정할 수 있는 Hook
-- 클래스형 컴포넌트의 **componentDidMount**, **componentDidUpdate**, **componentWillUnmount** 합친 기능과 비슷함
+- ###### 리액트 컴포넌트가 렌더링될 때마다 특저 작업을 수행하도록 설정할 수 있는 Hook
+- 클래스형 컴포넌트의 <span style="color:blue">**componentDidMount**, **componentDidUpdate**, **componentWillUnmount**</span> 합친 기능과 비슷함
 - 사용법
   - `useEffect(didUpdate);`
 
 ***
-### 마운트 될 때만 실행 하고 싶을 때
+
+## 마운트 될 때만 실행 하고 싶을 때
 - 맨 처음 렌더링 될 때만 실행하고, 업데이이트 될 때는 실핼 할 경우
   
 ```javaScript
@@ -85,7 +90,7 @@ useEffect(()=>{
 
 ***
 
-### <!-- fit --> 특정값이 업데이트 될 때만 실행 하고 싶을 때
+## <!-- fit --> 특정값이 업데이트 될 때만 실행 하고 싶을 때
 <!-- _class: split -->
 
 <div class=ldiv>
@@ -112,7 +117,7 @@ useEffect(()=>{
 
 ***
 
-### 정리(clean_up)를 이용하는 Effects
+## 정리(clean_up)를 이용하는 Effects
 - 네트워크 요청, DOM 수행 동작, 로깅 등은 clean-up이 필요 없음
   - 실행 이후 신경 쓸 것이 없음
 - 외부데이터에 subscription을 설정해야 하는 경우  메모리  누수가 발생하지 않도록 clean-up 하는 것이 중요함
@@ -136,7 +141,6 @@ function FriendStatus(props) {
   return isOnline ? 'Online' : 'Offline';
 }																	                            
 ```
-  
 
 ---
 
@@ -148,12 +152,14 @@ function FriendStatus(props) {
   - <span style="font-size:90%">`const [state, dispatch] = useReducer(reducer, initialArg, init);` </span>
 
 ***
+
 - reducer
 ``` javaScript
 function reducer(state, action) {
     return {...} // 불변성을 지키면서 업데이트한 새로운 상태를 반환
 }
 ```
+
 - action은 보통 다음 형태로 구성됨
 ``` javaScript
 {
@@ -191,7 +197,6 @@ function Counter() {
 }                                                                                                                       
 ```
 
-
 ---
 
 # useMemo
@@ -205,7 +210,6 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ***
 
 <!-- _class: split2 -->
-
 <div class=ldiv>
 
 -  useMemo를 사용하지 않을 경우
@@ -247,18 +251,17 @@ const Average = () => {
 };                                                                                         
 ``` 
 </div>
+
 <div class=rdiv>
 
-
 - 결과 
-   <span style="font-size:60%">input 이벤트가 발생할때마다 getAverage 함수가 호출 </span>
+<span style="font-size:60%">input 이벤트가 발생할때마다 getAverage 함수가 호출 </span>
 ![height:500px](./public/getAverage.png)
 </div>
 
 ***
 
 <!-- _class: split2 -->
-
 <div class=ldiv>
 
 -  useMemo를 사용할 경우
@@ -311,15 +314,12 @@ const Average = () => {
 </div>
 <div class=rdiv>
 
-
 - 결과
   <span style="font-size:60%">list 배열아 업데이터 될 경우에 getAverage 호출 </span>
 ![height:500px](./public/getAverageUseMemo.png)
 </div>
 
-
 ---
-
 
 # useCallback
 - 메모이제이션된 callback을 반환
@@ -332,7 +332,6 @@ const memoizedCallback = useCallback(
   [a, b],
 );
 ```
-- `useCallback(fn, deps) = useMemo(() => fn, deps)`
 
 ***
 
@@ -384,13 +383,12 @@ const Average2 = () => {
 
 ***
 
-### <!-- fit --> `useCallback(fn, deps) = useMemo(() => fn, deps)`  
+## <!-- fit --> `useCallback(fn, deps) = useMemo(() => fn, deps)`  
 <!-- _class: split -->
 
 <div class=ldiv>
 
 #### useCallback
-
 ```javaScript
 useCallback(() => {
   console.log('hello world!');
@@ -409,8 +407,6 @@ useMemo(() => {
 }, [])
 ```
 </div>
-
-
 
 ---
 
@@ -450,14 +446,33 @@ const RefSample = () => {
       refsample
     </div>
   );
-};
+};                                                                                    
 ```
 ---
 
 # custom Hooks
-**제목** 
-- 내용 
-- 내용
+###### "use"로 시작하고 다른 hook을 호출하는 하여 생성
+###### 컴포넌트 로직을 재사용 가능한 함수로 만들어 사용
+  
+```javaScript
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.name]: action.value
+  };
+}
+
+function useInputs(initialForm) {
+  const [state, dispatch] = useReducer(reducer, initialForm);
+  const onChange = e => {
+    dispatch(e.target);
+  };
+  return [state, onChange];
+}
+export default useInputs;                                                                                         
+```
 
 ---
 

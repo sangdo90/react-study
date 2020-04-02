@@ -33,15 +33,15 @@ function App() {
       {/* <div>
         <Counter/>
       </div> */}
-      {/* <div>
+      <div>
         <Info3/>
       </div>
       <div>
         <Average/>
-      </div> */}
-      {/* <div>
+      </div>
+      <div>
         <Average2/>
-      </div> */}
+      </div>
       <div>
         <Average3 />
       </div>
