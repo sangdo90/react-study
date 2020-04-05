@@ -7,11 +7,11 @@ const Info2 = () => {
   useEffect(() => {
     console.log("effect");
     console.log(name);
-    // return () => {
-    //   console.log("cleanup");
-    //   console.log(name);
-    // };
-  },[address]);
+    return () => {
+      console.log("cleanup");
+      console.log(name);
+    };
+  },[name]);
 
   const onChangeName = e => {
     setName(e.target.value);
