@@ -17,20 +17,6 @@ function createBulkTodos() {
 }
 
 const App = () => {
-  let original = { a: 1, b: { c: 1 } };
-  console.log('original :', JSON.stringify(original)); //  {"a":1,"b":{"c":1}}
-
-
-  let spreadCopy2 = produce(original, (draft) => {
-    const res = draft.a.push(original.a)
-  });
-
-  original.a = 2;
-  original.b.c = 3;
-
-  console.log('original : ', JSON.stringify(original)); // {"a":2,"b":{"c":3}}
-  console.log('spreadCopy2 : ', JSON.stringify(spreadCopy2)); // {"a":1,"b":{"c":1}}
-
   const [todos, setTodos] = useState(createBulkTodos);
 
   // 고유 값으로 사용 될 id

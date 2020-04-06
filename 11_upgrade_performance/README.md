@@ -18,40 +18,48 @@ auto-scaling: true
 
 ---
 
+# List
+- list가 엄청나게 클 경우에는?
+1. App 컴포넌트의 state 변경되면서 App 컴포넌트가 리렌더링
+2. 부모 컴포넌트가 리렌더링 되면 자식 컴포넌트도 리렌더링 됨
+-> 성능 저하
+
+---
+
 # React.memo를 사용한 컴포넌트 성능 최적화
 - shoudComponentUpdate 라이프사이클 메소드 사용(클래스형 컴포넌트)
 - React.memo 사용(함수형 컴포넌트)
+  - Props가 바뀌었을 때만 리렌더링
+- 사용법 
+  - `export default React.memo(function name)`
+- TIP : React Developer Tool
+  - https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=en
+  
+***
+
+### example
 ```js
-const TodoList = ({ todos, onRemove, onToggle }) => {
-  const rowRenderer = useCallback(
-    ({ index, key, style }) => {
-      const todo = todos[index];
-      return (
-        <TodoListItem
-          todo={todo}
-          key={key}
-          onRemove={onRemove}
-          onToggle={onToggle}
-          style={style}
-        />
-      );
-    },
-    [onRemove, onToggle, todos],
-  );
+const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
+  const { id, text, checked } = todo;
+
   return (
-    <List
-      className="TodoList"
-      width={512} // 전체 크기
-      height={513} // 전체 높이
-      rowCount={todos.length} // 항목 개수
-      rowHeight={57} // 항목 높이
-      rowRenderer={rowRenderer} // 항목을 렌더링할 때 쓰는 함수
-      list={todos} // 배열
-      style={{ outline: 'none' }} // List에 기본 적용되는 outline 스타일 제거
-    />
+    <div className="TodoListItem-virtualized" style={style}>
+      <div className="TodoListItem">
+        <div
+          className={cn('checkbox', { checked })}
+          onClick={() => onToggle(id)}
+        >
+          {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+          <div className="text">{text}</div>
+        </div>
+        <div className="remove" onClick={() => onRemove(id)}>
+          <MdRemoveCircleOutline />
+        </div>
+      </div>
+    </div>
   );
-};                                                                                                                                                                                                      
-export default React.memo(TodoList);
+};                                                                                                        
+export default React.memo(TodoListItem); 
 ```
 
 ---
