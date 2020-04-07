@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { List } from 'react-virtualized';
 
 const User = React.memo(function User({ user, onRemove, onToggle }) {
     return (
@@ -20,17 +21,38 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
 });
 
 function UserList({ users, onRemove, onToggle }) {
+
+    const rowRenderer = useCallback(({ index, key }) => {
+        const user = users[index];
+        return (
+            <User
+                user={user}
+                key={user.id}
+                onRemove={onRemove}
+                onToggle={onToggle}
+            />
+        )
+    }, [onRemove, onToggle, users])
+
     return (
-        <div>
-            {users.map(user => (
-                <User
-                    user={user}
-                    key={user.id}
-                    onRemove={onRemove}
-                    onToggle={onToggle}
-                />
-            ))}
-        </div>
+        // <div>
+        //     {users.map(user => (
+        //         <User
+        //             user={user}
+        //             key={user.id}
+        //             onRemove={onRemove}
+        //             onToggle={onToggle}
+        //         />
+        //     ))}
+        // </div>
+        <List
+            width={471}
+            height={1000}
+            rowCount={users.length}
+            rowHeight={21}
+            rowRenderer={rowRenderer}
+            list={users}
+        />
     );
 }
 

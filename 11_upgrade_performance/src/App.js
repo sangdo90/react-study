@@ -16,6 +16,7 @@ function createBulkTodos() {
   return array;
 }
 
+
 const App = () => {
   const [todos, setTodos] = useState(createBulkTodos);
 
