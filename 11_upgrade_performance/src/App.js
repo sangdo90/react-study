@@ -3,6 +3,7 @@ import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import produce from 'immer';
+import ContextMenu2 from './components/ContextMenu';
 
 function createBulkTodos() {
   const array = [];
@@ -15,7 +16,6 @@ function createBulkTodos() {
   }
   return array;
 }
-
 
 const App = () => {
   const [todos, setTodos] = useState(createBulkTodos);
@@ -47,10 +47,17 @@ const App = () => {
   }, []);
 
   return (
-    <TodoTemplate>
-      <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
-    </TodoTemplate>
+    <div>
+      <div>
+      <TodoTemplate>
+        <TodoInsert onInsert={onInsert} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+      </TodoTemplate>
+      </div>
+      <div>
+        <ContextMenu2/>
+      </div>
+    </div>
   );
 };
 

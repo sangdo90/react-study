@@ -5,6 +5,7 @@ import {
   MdRemoveCircleOutline,
 } from 'react-icons/md';
 import cn from 'classnames';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import './TodoListItem.scss';
 
 const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
@@ -18,7 +19,9 @@ const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
           onClick={() => onToggle(id)}
         >
           {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-          <div className="text">{text}</div>
+          <ContextMenuTrigger id="some_unique_identifier">
+            <div className="text">{text}</div>
+          </ContextMenuTrigger>
         </div>
         <div className="remove" onClick={() => onRemove(id)}>
           <MdRemoveCircleOutline />
