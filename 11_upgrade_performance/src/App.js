@@ -54,9 +54,9 @@ const App = () => {
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </TodoTemplate>
       </div>
-      <div>
+      {/* <div>
         <ContextMenu2/>
-      </div>
+      </div> */}
     </div>
   );
 };
