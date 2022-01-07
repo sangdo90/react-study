@@ -9,7 +9,7 @@
 @import 'gaia';
 
 section {
-  background: rgb(252, 252, 252)
+  background: rgb(255, 255, 255) !important
     /* background-color: black; */
 
 }
